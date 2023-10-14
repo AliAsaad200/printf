@@ -19,7 +19,7 @@ void print_correct_string(const char *sttring_task)
  */
 void print_correct_char(char c)
 {
-	putchar(c);
+	_putchar(c);
 }
 /**
  * format_arguments_output - Handle formatted output.
