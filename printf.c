@@ -15,7 +15,7 @@ void print_correct_string(const char *sttring_task)
 	}
 }
 /**
- * format_arguments_output0 - Handle formatted output.
+ * format_arguments_output - Handle formatted output.
  * @format: The format string.
  * @argument_format: The variable arguments list.
  *
@@ -52,13 +52,6 @@ int format_arguments_output(const char *format, va_list argument_format)
 
 	_putchar(c);
 	counting_down++;
-	break;
-	}
-	case 'i': case 'd':
-	{
-	int argument_numbs = va_arg(argument_format, int);
-
-	counting_down += print_correct_int(argument_numbs);
 	break;
 	}
 	default:
