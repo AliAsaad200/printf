@@ -17,14 +17,15 @@ void print_correct_string(const char *sttring_task)
 /**
  * format_arguments_output0 - Handle formatted output.
  * @format: The format string.
- * @argument_format_output: The variable arguments list.
+ * @argument_format: The variable arguments list.
  *
  * Return: The number of characters printed.
  */
-  int format_arguments_output(const char *format, va_list argument_format_output)
+int format_arguments_output(const char *format, va_list argument_format)
 {
 	int counting_down = 0;
 	const char *c;
+
 	for (c = format; *c; ++c)
 	{
 	if (*c != '%')
@@ -39,7 +40,7 @@ void print_correct_string(const char *sttring_task)
 	{
 	case 's':
 	{
-	char *sttring_task = va_arg(argument_format_output, char *);
+	char *sttring_task = va_arg(argument_format, char *);
 
 	print_correct_string(sttring_task);
 	counting_down += strlen(sttring_task);
@@ -47,7 +48,7 @@ void print_correct_string(const char *sttring_task)
 	}
 	case 'c':
 	{
-	char c = va_arg(argument_format_output, int);
+	char c = va_arg(argument_format, int);
 
 	_putchar(c);
 	counting_down++;
@@ -55,7 +56,7 @@ void print_correct_string(const char *sttring_task)
 	}
 	case 'i': case 'd':
 	{
-	int argument_numbs = va_arg(argument_format_output, int);
+	int argument_numbs = va_arg(argument_format, int);
 
 	counting_down += print_correct_int(argument_numbs);
 	break;
