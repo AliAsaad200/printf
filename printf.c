@@ -10,17 +10,9 @@ void print_correct_string(const char *sttring_task)
 {
 	while (*sttring_task)
 	{
-		print_correct_char(*sttring_task);
+		_putchar(*sttring_task);
 		sttring_task++;
 	}
-}
-/**
- * print_correct_char - Print a single character.
- * @c: The character to print.
- */
-void print_correct_char(char c)
-{
-	_putchar(c);
 }
 /**
  * format_arguments_output - Handle formatted output.
@@ -32,12 +24,13 @@ void print_correct_char(char c)
 int format_arguments_output(const char *format, va_list argument_format_output)
 {
 	int counting_down = 0;
+	const char *c;
 
-	for (const char *c = format; *c; ++c)
+	for (c = format; *c; ++c)
 	{
 	if (*c != '%')
 	{
-		print_correct_char(*c);
+		_putchar(*c);
 		counting_down++;
 	}
 	else
@@ -57,13 +50,13 @@ int format_arguments_output(const char *format, va_list argument_format_output)
 		{
 			char c = va_arg(argument_format_output, int);
 
-			print_correct_char(c);
+			_putchar(c);
 			counting_down++;
 			break;
 		}
 		default:
-			print_correct_char('%');
-			print_correct_char(*c);
+			_putchar('%');
+			_putchar(*c);
 			counting_down += 2;
 		break;
 		}
@@ -80,10 +73,11 @@ int format_arguments_output(const char *format, va_list argument_format_output)
  */
 int _printf(const char *format, ...)
 {
+	int result;
 	va_list args;
 
 	va_start(args, format);
-	int result = format_arguments_output(format, args);
+	result = format_arguments_output(format, args);
 
 	va_end(args);
 	return (result);
