@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdlib.h>
+#include "main.h"
 /**
  * print_correct_string - Print a string.
  * @sttring_task: The string to print.
@@ -9,17 +11,9 @@ void print_correct_string(const char *sttring_task)
 {
 	while (*sttring_task)
 	{
-	print_correct_char(*sttring_task);
+	_putchar(*sttring_task);
 	sttring_task++;
 	}
-}
-/**
- * print_correct_char - Print a single character.
- * @c: The character to print.
- */
-void print_correct_char(char c)
-{
-	_putchar(c);
 }
 /**
  * print_correct_int - Print a num.
@@ -30,27 +24,25 @@ void print_correct_char(char c)
 int print_correct_int(int no)
 {
 	int char_count = 0;
-	char sign = (num < 0) ? '-' : '+';
-
-	_putchar(sign);
-	char_count++;
-
-	num = (num < 0) ? -num : num;
-
-	char buffer[21];
-	int index = 0;
+	char sign = (no < 0) ? '-' : '+';
+	char buffer[21]; 
+	int index;
 	int i;
 
-	if (num == 0)
+	index = 0;
+	_putchar(sign);
+	char_count++;
+	no = (no < 0) ? -no : no;
+	if (no == 0)
 	{
 	buffer[index++] = '0';
 	}
 	else
 	{
-	while (num > 0)
+	while (no > 0)
 	{
-	buffer[index++] = '0' + num % 10;
-	num /= 10;
+	buffer[index++] = '0' + no % 10;
+	no /= 10;
 	}
 	}
 	buffer[index] = '\0';
@@ -71,12 +63,12 @@ int print_correct_int(int no)
 int format_arguments_output(const char *format, va_list argument_format_output)
 {
 	int counting_down = 0;
-
-	for (const char *c = format; *c; ++c)
+	const char *c;
+	for (c = format; *c; ++c)
 	{
 	if (*c != '%')
 	{
-	print_correct_char(*c);
+	_putchar(*c);
 	counting_down++;
 	}
 	else
@@ -96,7 +88,7 @@ int format_arguments_output(const char *format, va_list argument_format_output)
 	{
 	char c = va_arg(argument_format_output, int);
 
-	print_correct_char(c);
+	_putchar(c);
 	counting_down++;
 	break;
 	}
@@ -108,8 +100,8 @@ int format_arguments_output(const char *format, va_list argument_format_output)
 	break;
 	}
 	default:
-	print_correct_char('%');
-	print_correct_char(*c);
+	_putchar('%');
+	_putchar(*c);
 	counting_down += 2;
 	break;
 	}
@@ -126,11 +118,11 @@ int format_arguments_output(const char *format, va_list argument_format_output)
  */
 int _printf(const char *format, ...)
 {
+	int result;
 	va_list args;
 
 	va_start(args, format);
-	int result = format_arguments_output(format, args);
-
+	result = format_arguments_output(format, args);
 	va_end(args);
 	return (result);
 }
