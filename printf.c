@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include "main.h"
 /**
  * print_correct_string - Print a string.
  * @sttring_task: The string to print.
