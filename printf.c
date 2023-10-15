@@ -54,6 +54,13 @@ int format_arguments_output(const char *format, va_list argument_format)
 	counting_down++;
 	break;
 	}
+	case 'i': case 'd':
+	{
+	int argument_numbs = va_arg(argument_format_output, int);
+
+	counting_down += print_correct_int(argument_numbs);
+	break;
+	}
 	default:
 	_putchar('%');
 	_putchar(*c);
