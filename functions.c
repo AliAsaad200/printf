@@ -15,7 +15,7 @@ int print_correct_int(int no)
 {
 	int char_count = 0;
 	char sign = (no < 0) ? '-' : '+';
-	char buffer[21]; 
+	char buffer[21];
 	int index;
 	int i;
 
