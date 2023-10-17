@@ -13,33 +13,22 @@
  */
 int print_correct_int(int no)
 {
-	int char_count = 0;
-	char sign = (no < 0) ? '-' : '+';
-	char buffer[21];
-	int index;
-	int i;
+	int i = 0;
+	int num = no;
+	int digit;
 
-	index = 0;
-	_putchar(sign);
-	char_count++;
-	no = (no < 0) ? -no : no;
-	if (no == 0)
+	if (num < 0)
 	{
-	buffer[index++] = '0';
+	putchar('-');
+	num = -num;
+	i++;
 	}
-	else
+	while (num > 0)
 	{
-	while (no > 0)
-	{
-	buffer[index++] = '0' + no % 10;
-	no /= 10;
+	digit = num % 10;
+	putchar(digit + '0');
+	num = num / 10;
+	i++;
 	}
-	}
-	buffer[index] = '\0';
-	for (i = index - 1; i >= 0; i--)
-	{
-	_putchar(buffer[i]);
-	char_count++;
-	}
-	return (char_count);
+	return (i);
 }
