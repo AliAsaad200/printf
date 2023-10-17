@@ -17,6 +17,8 @@ int print_correct_int(int no)
 	int power_of_ten = 1;
 	int char_count = 0;
 	int value = no;
+	int temp;
+	int i;
 
 	if (value < 0)
 	{
@@ -29,18 +31,18 @@ int print_correct_int(int no)
 	putchar('0');
 	return (1);
 	}
-	int temp = value;
+	temp = value;
 
 	while (temp != 0)
 	{
 	temp /= 10;
 	digit_count++;
 	}
-	for (int i = 1; i <= digit_count - 1; i++)
+	for (i = 1; i <= digit_count - 1; i++)
 	{
 	power_of_ten *= 10;
 	}
-	for (int i = 1; i <= digit_count; i++)
+	for (i = 1; i <= digit_count; i++)
 	{
 	int digit = value / power_of_ten;
 
