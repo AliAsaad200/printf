@@ -13,22 +13,40 @@
  */
 int print_correct_int(int no)
 {
-	int i = 0;
 	int num = no;
-	int digit;
+	int i = 0;
 
-	if (num < 0)
+	if (no < 0)
 	{
-	putchar('-');
+	_putchar('-');
 	num = -num;
 	i++;
 	}
-	while (num > 0)
+
+	if (num == 0)
 	{
-	digit = num % 10;
-	putchar(digit + '0');
-	num = num / 10;
+	_putchar('0');
 	i++;
+	}
+	else
+	{
+	int exp = 1;
+	int temp = num;
+
+	while (temp > 9)
+	{
+	exp *= 10;
+	temp /= 10;
+	}
+	while (exp > 0)
+	{
+	int digit = num / exp;
+
+	_putchar(digit + '0');
+	num -= digit * exp;
+	exp /= 10;
+	i++;
+	}
 	}
 	return (i);
 }
