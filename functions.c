@@ -13,40 +13,41 @@
  */
 int print_correct_int(int no)
 {
-	int num = no;
-	int i = 0;
+	int digit_count = 0;
+	int power_of_ten = 1;
+	int char_count = 0;
+	int value = no;
 
-	if (no < 0)
+	if (value < 0)
 	{
 	_putchar('-');
-	num = -num;
-	i++;
+	char_count++;
+	value = -value;
 	}
-
-	if (num == 0)
+	if (value == 0)
 	{
-	_putchar('0');
-	i++;
+	putchar('0');
+	return (1);
 	}
-	else
-	{
-	int exp = 1;
-	int temp = num;
+	int temp = value;
 
-	while (temp > 9)
+	while (temp != 0)
 	{
-	exp *= 10;
 	temp /= 10;
+	digit_count++;
 	}
-	while (exp > 0)
+	for (int i = 1; i <= digit_count - 1; i++)
 	{
-	int digit = num / exp;
+	power_of_ten *= 10;
+	}
+	for (int i = 1; i <= digit_count; i++)
+	{
+	int digit = value / power_of_ten;
 
-	_putchar(digit + '0');
-	num -= digit * exp;
-	exp /= 10;
-	i++;
+	putchar(digit + '0');
+	char_count++;
+	value -= digit * power_of_ten;
+	power_of_ten /= 10;
 	}
-	}
-	return (i);
+	return (char_count);
 }
