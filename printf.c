@@ -84,7 +84,6 @@ void process_string_argument(va_list argument_format, int *counting_down)
  */
 void process_unknown_specifier(const char *format, int *counting_down)
 {
-	_putchar('%');
 	_putchar(*format);
 	(*counting_down) += 2;
 }
