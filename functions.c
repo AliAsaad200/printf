@@ -13,10 +13,7 @@
  */
 int print_correct_int(int no)
 {
-	int digit_count = 0;
-	int power_of_ten = 1;
-	int char_count = 0;
-	int value = no;
+	int digit_count = 0, power_of_ten = 1, char_count = 0, value = no;
 	int temp;
 	int i;
 
@@ -47,6 +44,10 @@ int print_correct_int(int no)
 	int digit = value / power_of_ten;
 
 	putchar(digit + '0');
+	if (value < 0)
+	_putchar((digit * -1) + 48);
+	else
+	_putchar(digit + '0');
 	char_count++;
 	value -= digit * power_of_ten;
 	power_of_ten /= 10;
