@@ -25,7 +25,7 @@ int format_arguments_output(const char *format, va_list argument_format)
 {
 	int counting_down = 0;
 	const char *c;
-	char cc;
+	char c1;
 
 	for (c = format; *c != '\0'; ++c)
 	{
@@ -43,8 +43,8 @@ int format_arguments_output(const char *format, va_list argument_format)
 				process_string_argument(argument_format, &counting_down);
 				break;
 			case 'c':
-				cc = va_arg(argument_format, int);
-				_putchar(cc);
+				c1 = va_arg(argument_format, int);
+				_putchar(c1);
 				counting_down++;
 				break;
 			case 'i':
