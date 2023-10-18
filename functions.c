@@ -11,45 +11,45 @@
  *
  * Return: The number of characters printed.
  */
-int print_correct_int(int no)
+int print_correct_int(va_list args)
 {
-	int digit_count = 0, power_of_ten = 1, char_count = 0, value = no;
-	int temp;
-	int i;
+	int length = 0, power_of_ten = 1, i, digit, result, char_count = 0, n;
 
-	if (value < 0)
+	result = va_arg(args, int);
+	if (result < 0)
 	{
 	_putchar('-');
 	char_count++;
-	value = -value;
 	}
-	if (value == 0)
+	if (result == 0)
 	{
-	putchar('0');
+	_putchar('0');
 	return (1);
 	}
-	temp = value;
-
-	while (temp != 0)
+	n = result;
+	length = 0;
+	while (n != 0)
 	{
-	temp /= 10;
-	digit_count++;
+	n /= 10;
+	length++;
 	}
-	for (i = 1; i <= digit_count - 1; i++)
+	for (i = 1; i <= length - 1; i++)
 	{
 	power_of_ten *= 10;
 	}
-	for (i = 1; i <= digit_count; i++)
+	for (i = 1; i <= length; i++)
 	{
-	int digit = value / power_of_ten;
-
-	putchar(digit + '0');
-	if (value < 0)
-	_putchar((digit * -1) + 48);
+	digit = result / power_of_ten;
+	if (result < 0)
+	{
+	_putchar((-1 * digit) + 48);
+	}
 	else
+	{
 	_putchar(digit + '0');
+	}
 	char_count++;
-	value -= digit * power_of_ten;
+	result -= digit * power_of_ten;
 	power_of_ten /= 10;
 	}
 	return (char_count);

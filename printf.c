@@ -25,7 +25,6 @@ int format_arguments_output(const char *format, va_list argument_format)
 {
 	int counting_down = 0;
 	const char *c;
-	int argument_numbs;
 	char cc;
 
 	for (c = format; *c != '\0'; ++c)
@@ -50,8 +49,7 @@ int format_arguments_output(const char *format, va_list argument_format)
 				break;
 			case 'i':
 			case 'd':
-				argument_numbs = va_arg(argument_format, int);
-				counting_down += print_correct_int(argument_numbs);
+				counting_down += print_correct_int(argument_format);
 				break;
 			default:
 				process_unknown_specifier(format, &counting_down);
