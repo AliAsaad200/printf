@@ -7,7 +7,7 @@
 
 /**
  * print_correct_int - Print a num.
- * @no: The character to print.
+ * @args: The character to print.
  *
  * Return: The number of characters printed.
  */
